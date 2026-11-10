@@ -64,8 +64,8 @@ ARCHIVOS_FUENTE = {"Anton": "Anton-Regular.ttf", "Gelasio": "Gelasio.ttf", "Inte
 ESTILOS_BLOQUE = {
     #            fuente      peso  tam  interlinea
     "titular":  (None,       700,  118, 1.04),
-    "cuerpo":   ("Inter",    600,   54, 1.28),
-    "serif":    ("Gelasio",  500,   64, 1.22),
+    "cuerpo":   ("Inter",    600,   60, 1.28),
+    "serif":    ("Gelasio",  500,   76, 1.20),
     "nota":     ("Caveat",   600,   82, 1.05),
     "etiqueta": ("Inter",    700,   54, 1.50),
 }
@@ -671,6 +671,9 @@ def capa_bloque(bloque: dict, perfil: dict, tam: int, fondo_rgb, sombra: bool) -
             actual.append(palabra)
         if actual:
             lineas.append(actual)
+            # Sin palabra huérfana: si la última línea quedó con una sola palabra, baja la anterior a hacerle compañía.
+            if len(lineas) >= 2 and len(actual) == 1 and len(lineas[-2]) >= 3 and fnt.getlength(" ".join([lineas[-2][-1]] + actual)) <= ancho_max:
+                actual.insert(0, lineas[-2].pop())
     if not lineas:
         raise ErrorHistorias("hay un bloque sin texto")
     anchos = [fnt.getlength(" ".join(l)) for l in lineas]
@@ -691,7 +694,19 @@ def capa_bloque(bloque: dict, perfil: dict, tam: int, fondo_rgb, sombra: bool) -
         tinta = color(bloque.get("color", auto), perfil)
         if fondo_rgb is not None and abs(_luz(tinta) - _luz(fondo_rgb)) < 0.12:
             raise ErrorHistorias(f"«{str(bloque.get('texto'))[:30]}» no se leería: su color casi iguala al del fondo")
-    acento = color(bloque.get("color_resalte", "acento"), perfil)
+    # El resalte debe leerse: sobre foto (letra blanca) tiene que ser claro; sobre color, despegarse del fondo.
+    # Si ni el acento ni el apoyo sirven, se subraya en lugar de cambiar el color.
+    subrayar = estilo in ("nota", "etiqueta")
+    if "color_resalte" in bloque:
+        acento = color(bloque["color_resalte"], perfil)
+    else:
+        contra = caja_rgb if estilo == "etiqueta" else fondo_rgb
+        candidatos = [color("acento", perfil), color("apoyo", perfil)]
+        validos = [c for c in candidatos if (_luz(c) >= 0.45 if contra is None else abs(_luz(c) - _luz(contra)) >= 0.25)]
+        if validos:
+            acento = validos[0]
+        else:
+            subrayar, acento = True, tinta
     marcadas = _marcadas([p for l in lineas for p in l], bloque.get("resaltar", []))
     espacio = fnt.getlength(" ")
     alinear = bloque.get("alinear", "centro")
@@ -707,9 +722,9 @@ def capa_bloque(bloque: dict, perfil: dict, tam: int, fondo_rgb, sombra: bool) -
             marcada = n in marcadas
             n += 1
             largo = fnt.getlength(p)
-            if marcada and estilo in ("nota", "etiqueta"):  # subrayado a mano en vez de cambiar el color
+            if marcada and subrayar:  # subrayado en vez de cambiar el color
                 d.line([x, base_y + tam * 0.14, x + largo, base_y + tam * 0.11], fill=(*acento, 255), width=max(5, tam // 12))
-            d.text((x, base_y), p, font=fnt, fill=(*(acento if marcada and estilo not in ("nota", "etiqueta") else tinta), 255), anchor="ls")
+            d.text((x, base_y), p, font=fnt, fill=(*(acento if marcada and not subrayar else tinta), 255), anchor="ls")
             x += largo + espacio
     giro = float(bloque.get("giro", -2.5 if estilo == "nota" else 0))
     if giro:

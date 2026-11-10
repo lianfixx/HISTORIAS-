@@ -1,5 +1,16 @@
 # Cambios
 
+## 0.2.1 · 2026-11-10 · candidato
+
+Revisión visual de láminas en los cuatro espacios y medición de 720 láminas (todos los estilos, posiciones, alineaciones y giros sobre los cuatro fondos de cada espacio): ninguna tinta fuera de la zona segura ni texto invisible.
+
+- El resalte siempre se lee: sobre foto usa el más claro entre acento y apoyo; sobre color, el que se despegue del fondo; si ninguno sirve, subraya. Antes el dorado de Castorena y el azul de PAN se perdían sobre una foto.
+- Al partir líneas no queda una palabra sola en la última.
+- `cuerpo` sube a 60 px y `serif` a 76: en lámina lisa se veían chicos.
+- 72 pruebas.
+
+Una segunda auditoría independiente se interrumpió por límite de uso sin entregar resultados; queda pendiente repetirla.
+
 ## 0.2.0 · 2026-11-10 · candidato
 
 Auditoría independiente del motor: 24 hallazgos confirmados, todos corregidos, cada uno con su prueba.

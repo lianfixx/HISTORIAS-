@@ -66,7 +66,7 @@
 | `estilo` | `titular` (tipografía del espacio), `cuerpo` (Inter), `serif` (Gelasio), `nota` (Caveat, letra a mano), `etiqueta` (texto sobre caja, como el de Instagram) |
 | `pos` | `arriba`, `centro`, `abajo` |
 | `alinear` | `izq`, `centro`, `der` |
-| `resaltar` | lista, por ejemplo `["gym", "no pasó"]`: van en el color de acento (subrayadas en `nota` y `etiqueta`); una frase solo cuenta si sus palabras van seguidas |
+| `resaltar` | lista, por ejemplo `["gym", "no pasó"]`: van en el color de acento o, si no se leería, en el de apoyo; subrayadas en `nota` y `etiqueta` y cuando ningún color sirve. Una frase solo cuenta si sus palabras van seguidas |
 | `color`, `fondo`, `color_resalte` | color del espacio, `blanco`, `negro` o `#RRGGBB` (`fondo` solo en `etiqueta`). Sin `color`, el motor elige el que se lea sobre el fondo |
 | `tam` | cuerpo en px, de 20 a 400 |
 | `ancho` | ancho máximo en px, de 200 a 900 |

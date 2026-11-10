@@ -548,9 +548,24 @@ class Pixeles(Base):
         self.assertEqual(m(["un", "año", "sin", "ano"], ["año"]), {1})
         self.assertEqual(m(["hola", "—", "mundo"], ["¡!"]), set())
 
+    def test_sin_palabra_huerfana(self):
+        m = h.capa_bloque({"texto": "Lo dice el propio decreto, artículo 12", "estilo": "etiqueta", "ancho": 760}, PERFIL, 54, None, False)
+        sola = h.capa_bloque({"texto": "12", "estilo": "etiqueta"}, PERFIL, 54, None, False)
+        self.assertGreater(m["w"], sola["w"] * 2)
+
+    def test_el_resalte_se_lee_sobre_foto_en_cada_espacio_real(self):
+        with mock.patch.dict(os.environ, clear=False):
+            os.environ.pop("HISTORIAS_ESPACIOS", None)
+            reales = {n: json.loads((Path(h.__file__).resolve().parents[3] / "espacios" / n / "perfil.json").read_text(encoding="utf-8"))
+                      for n in ("personal", "milla", "castorena", "pan")}
+        for nombre, pf in reales.items():
+            capa = h.capa_bloque({"texto": "MMMM", "estilo": "titular", "resaltar": ["MMMM"]}, pf, 118, None, False)["capa"].convert("RGB")
+            self.assertGreaterEqual(capa.convert("L").getextrema()[1] / 255, 0.45, nombre)  # no queda oscura sobre una foto
+
     def test_salto_de_linea(self):
         una = h.capa_bloque({"texto": "uno dos", "estilo": "cuerpo"}, PERFIL, 54, (255, 255, 255), False)
         dos = h.capa_bloque({"texto": "uno\ndos", "estilo": "cuerpo"}, PERFIL, 54, (255, 255, 255), False)
+        self.assertEqual(dos["w"], h.capa_bloque({"texto": "uno\n\ndos", "estilo": "cuerpo"}, PERFIL, 54, (255, 255, 255), False)["w"])
         self.assertGreater(dos["h"], una["h"] + 40)
 
 
