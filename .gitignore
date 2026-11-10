@@ -1,0 +1,9 @@
+# Privado: fotos de personas, secuencias y estados de proveedores no se suben
+producciones/
+fotos/
+*.env
+.env*
+__pycache__/
+*.pyc
+dist/
+.DS_Store

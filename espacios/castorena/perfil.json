@@ -1,0 +1,23 @@
+{
+  "nombre": "Castorena Abogados",
+  "handle": "",
+  "estado": "candidato",
+  "colores": {
+    "papel": "#F7F5F0",
+    "tinta": "#0D1B2A",
+    "acento": "#8A6D3B",
+    "apoyo": "#C8A96B"
+  },
+  "tono": "Muy formal e institucional, de usted, frases cortas y sentenciosas. Explica; no opina sobre asuntos en curso, sin humor, sin promesas de resultado. Requiere visto bueno del despacho antes de publicar.",
+  "titular": "Gelasio",
+  "estilo_imagen": "foto",
+  "filtro": "sobrio",
+  "max_palabras": 24,
+  "fondos_ia": false,
+  "frases_prohibidas": [
+    "garantizamos",
+    "ganamos"
+  ],
+  "tono_historias": "Formal, de usted, frases cortas. Sin humor ni emojis.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/castorena), leído el 2026-11-10"
+}

@@ -1,0 +1,20 @@
+{
+  "nombre": "Acción Juvenil",
+  "handle": "",
+  "estado": "candidato",
+  "colores": {
+    "papel": "#F3EFE6",
+    "tinta": "#253775",
+    "acento": "#0043A1",
+    "apoyo": "#EDBF4D"
+  },
+  "tono": "Crítico y directo, con datos verificables y fuente en pantalla. La postura es de Emi; no hablar a nombre del partido sin autorización.",
+  "titular": "Anton",
+  "estilo_imagen": "foto",
+  "filtro": "natural",
+  "max_palabras": 28,
+  "fondos_ia": false,
+  "frases_prohibidas": [],
+  "tono_historias": "Directo y con datos; la postura es de Emi, no del partido. Fotos reales de actividades, no imágenes generadas.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/pan), leído el 2026-11-10"
+}

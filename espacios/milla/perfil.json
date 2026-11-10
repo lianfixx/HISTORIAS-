@@ -1,0 +1,24 @@
+{
+  "nombre": "MILLA ABOGADOS",
+  "handle": "",
+  "estado": "candidato",
+  "colores": {
+    "papel": "#F6F0E4",
+    "tinta": "#172636",
+    "acento": "#D6A72C",
+    "apoyo": "#E9DDBF"
+  },
+  "tono": "Serio y cercano. Contenido jurídico solo con fuentes oficiales vigentes; sin prometer resultados. Humor mínimo y nunca sobre el problema del cliente.",
+  "titular": "Anton",
+  "estilo_imagen": "ilustracion",
+  "filtro": "sobrio",
+  "max_palabras": 28,
+  "fondos_ia": true,
+  "frases_prohibidas": [
+    "garantizamos",
+    "ganamos tu caso",
+    "100% seguro"
+  ],
+  "tono_historias": "Serio y cercano, de tú. Explica un derecho o un error común sin prometer resultados.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/milla), leído el 2026-11-10"
+}

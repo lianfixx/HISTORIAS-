@@ -1,0 +1,20 @@
+{
+  "nombre": "Emi · personal",
+  "handle": "",
+  "estado": "candidato",
+  "colores": {
+    "papel": "#F4ECD6",
+    "tinta": "#20180F",
+    "acento": "#FF5A1F",
+    "apoyo": "#FFD23F"
+  },
+  "tono": "Suelto, crítico y con humor; gym, vlogs y estilo de vida. Un chiste cada 2 o 3 escenas, nunca a costa del dato.",
+  "titular": "Anton",
+  "estilo_imagen": "ilustracion",
+  "filtro": "calido",
+  "max_palabras": 30,
+  "fondos_ia": true,
+  "frases_prohibidas": [],
+  "tono_historias": "Como le escribe a sus amigos: suelto, directo, con humor. Primera persona.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/personal), leído el 2026-11-10"
+}
