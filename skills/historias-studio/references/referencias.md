@@ -6,13 +6,13 @@ Emi manda una imagen y dice qué le gusta de ella. Se imita el look (luz, color,
 
 1. **Guardar** la imagen en Drive, `HISTORIAS CLAUDE/<espacio>/_referencias/`. Si llega como enlace de Pinterest y la nube no lo abre, abrirlo desde la box.
 2. **Preguntar** si no lo dijo: ¿qué te gusta de esta? (el color, la letra, el acomodo, el ánimo) y ¿es para una secuencia o queda como estilo del espacio?
-3. **Medir**: `$H referencia IMG --espacio E --nombre N` crea `espacios/E/referencias/N.json` con medidas, paleta y un filtro de partida.
+3. **Medir**: `$H referencia IMG --espacio E --nombre "Café domingo"` crea `espacios/E/referencias/cafe-domingo.json` (el nombre en minúsculas, sin acentos y con guiones) con medidas, paleta y un filtro de partida. Repetir el comando vuelve a medir sin borrar lo escrito a mano.
 4. **Mirar** la imagen y completar la ficha a ojo:
    - `tipografia`: familia más cercana de las disponibles (`titular` del espacio, `serif`, `cuerpo`, `nota`, `etiqueta`), mayúsculas o no, tamaño relativo, color, si lleva caja.
    - `composicion`: dónde va el texto, cuánto aire, alineación, si hay giro, cuántos elementos.
    - `espiritu`: en una frase, qué transmite (domingo lento, apunte de libreta, revista, urgente).
    - `notas_emi`: lo que él dijo, literal.
-5. **Borrador** con una foto de Emi y ese filtro: `$H render DIR --borrador`.
+5. **Borrador** con una foto de Emi y ese filtro: en el plan, `"estilo": {"filtro": "", "referencia": "cafe-domingo"}` y `$H render DIR --borrador`. Los ajustes se hacen en el `filtro` de la ficha.
 6. **Comparar**: `$H comparar REF DIR/out/01.png`. Cada número es la diferencia entre la lámina y la referencia:
 
    | Medida | Si sale positiva | Corregir |
@@ -25,7 +25,7 @@ Emi manda una imagen y dice qué le gusta de ella. Se imita el look (luz, color,
    | `vineta` | esquinas más oscuras | bajar `vineta` |
 
    Repetir hasta que ninguna pase de ±0.05 (±0.005 en `grano`), y entonces mirar las dos juntas: los números acercan, el ojo decide. La foto de fondo pesa en las medidas; comparar con una foto parecida a la de la referencia.
-7. **Enseñar** a Emi referencia y lámina lado a lado. Lo que diga se guarda con `aprender` y, si aprueba, el filtro queda en la ficha y puede pasar a ser el del espacio.
+7. **Enseñar** a Emi referencia y lámina lado a lado. Lo que diga se guarda con `aprender` y, si aprueba, se pone `"filtro_aprobado": true` en la ficha (así no se pisa al volver a medir) y puede pasar a ser el del espacio.
 
 ## Límites
 

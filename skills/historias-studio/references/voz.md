@@ -8,7 +8,7 @@
 - Frases desiguales. Tres frases del mismo largo seguidas suenan a plantilla.
 - Sin fórmulas: «descubre», «al siguiente nivel», «¿sabías que…?», «no es solo X, es Y», «en resumen», listas de tres adjetivos.
 - Sin raya larga, sin punto y coma, sin mayúsculas en cada palabra.
-- Emojis: los que Emi usaría, casi siempre ninguno o uno.
+- Emojis: casi siempre ninguno. El motor no los dibuja; si Emi quiere uno, lo añade en Instagram (se anota en `nota_publicacion`).
 - Datos duros (fechas, precios, artículos de ley, cifras) solo si Emi los dio o hay fuente; nunca de memoria.
 - En `milla` y `castorena` rige además lo jurídico: fuente oficial vigente, sin prometer resultados, sin opinar de asuntos en curso.
 - Para WhatsApp y correo existe `estilo-emi`; su registro informal sirve de guía para `personal`.

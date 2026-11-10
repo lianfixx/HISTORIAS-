@@ -2,7 +2,7 @@
 
 Método, motor y memoria para hacer las historias de Instagram de Emi con cualquier IA: la IA pregunta, propone y dibuja; Emi decide.
 
-Estado: **0.1.0, candidato** (10/11/2026). El motor está probado; falta la primera secuencia real aprobada por Emi.
+Estado: **0.2.0, candidato** (10/11/2026). El motor está probado; falta la primera secuencia real aprobada por Emi.
 
 ## Qué hay aquí
 
@@ -28,8 +28,11 @@ pip install -r requirements.txt
 H="python3 skills/historias-studio/scripts/historias.py"
 $H espacios
 $H proyecto producciones/personal/mi-tema --espacio personal
+# llenar el brief y las láminas en producciones/personal/mi-tema/plan.json
 $H render producciones/personal/mi-tema --borrador
 ```
+
+El plan recién creado no se dibuja hasta tener el `brief` con las respuestas de Emi: es a propósito.
 
 Decirle a la IA: «hazme unas historias para …». Ella sigue `SKILL.md`: lee lo aprendido, pregunta, propone el guion, espera aprobación, dibuja, revisa, entrega en Drive y guarda la lección.
 
@@ -40,7 +43,7 @@ Vox Studio (`lianfixx/VIDEOS-IA-SKILL-MILLA`) hace los videos; Historias Studio,
 ## Comprobar
 
 ```bash
-python3 tools/verificar.py     # enlaces, versión, puentes, nada privado en git y 45 pruebas (1 minuto)
+python3 tools/verificar.py     # enlaces, versión, puentes, nada privado en git y las pruebas del motor (minuto y medio)
 python3 tools/empaquetar.py    # dist/historias-studio.zip para subir la skill a otra IA
 ```
 

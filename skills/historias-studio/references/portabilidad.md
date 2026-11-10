@@ -13,6 +13,10 @@ Todo es Markdown, JSON y un script de Python sin servicios propios de ninguna pl
 
 `pip install -r requirements.txt` y seguir `SKILL.md`. Para Kie hace falta `KIE_API_KEY` en el entorno (la misma de Vox). Sin ella todo funciona menos `fondo --execute`, `saldo` y `cierre`.
 
+Desde el ZIP (fuera del repositorio) el motor es `python3 scripts/historias.py`, los espacios viajan dentro de la skill y las secuencias se crean en `producciones/` de la carpeta desde la que se ejecuta. `HISTORIAS_ESPACIOS` y `HISTORIAS_PRODUCCIONES` cambian esas rutas. Lo aprendido en una copia suelta no llega a GitHub: hay que pasarlo al repositorio.
+
+Probado con Python 3.10 y Pillow 10.1 en Linux. En Windows y macOS no se ha ejecutado; todo el texto se lee y escribe en UTF-8.
+
 ## Sin terminal
 
 La IA hace lo que no necesita ejecutar nada: brief, guion, elección de estructura, ficha de referencia a ojo y el `plan.json` completo según [plan.md](plan.md). Lo entrega a Emi como «plan listo para dibujar» y otra IA con terminal corre `validar` y `render`. No debe afirmar que validó ni que dibujó.

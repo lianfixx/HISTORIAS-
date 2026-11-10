@@ -11,12 +11,13 @@ SKILL = RAIZ / "skills" / "historias-studio"
 
 
 def main() -> int:
-    destino = RAIZ / "dist" / "historias-studio.zip"
-    destino.parent.mkdir(exist_ok=True)
+    destino = Path(sys.argv[1]) if len(sys.argv) > 1 else RAIZ / "dist" / "historias-studio.zip"
+    destino.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(destino, "w", zipfile.ZIP_DEFLATED) as z:
         for f in sorted(SKILL.rglob("*")):
             if f.is_file() and "__pycache__" not in f.parts and not f.name.startswith("test_"):
                 z.write(f, Path("historias-studio") / f.relative_to(SKILL))
+        z.write(RAIZ / "requirements.txt", "historias-studio/requirements.txt")
         # Los espacios viajan con la skill para que funcione fuera del repositorio.
         for f in sorted((RAIZ / "espacios").rglob("*")):
             if f.is_file():
