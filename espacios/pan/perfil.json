@@ -15,7 +15,7 @@
   "max_palabras": 28,
   "fondos_ia": false,
   "frases_prohibidas": [],
-  "tono_historias": "De tú, directo y con datos. Es la postura personal de Emi, en su propia cuenta; no habla a nombre del partido. Fotos reales de actividades, no imágenes generadas.",
+  "tono_historias": "De tú, directo y con datos. Es la postura personal de Emi, en su propia cuenta; no habla a nombre del partido y no se mencionan cargos. Fotos reales de actividades, no imágenes generadas.",
   "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/pan), leído el 2026-11-10",
   "cuenta": "por crear (Emi, 11/11/2026)",
   "frecuencia": "diaria",
@@ -29,5 +29,6 @@
   "formatos": [
     "fija",
     "animada"
-  ]
+  ],
+  "sin_cargos": true
 }

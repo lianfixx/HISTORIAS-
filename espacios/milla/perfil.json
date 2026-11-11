@@ -1,6 +1,6 @@
 {
   "nombre": "MILLA ABOGADOS",
-  "handle": "",
+  "handle": "millabogados",
   "estado": "candidato",
   "colores": {
     "papel": "#F6F0E4",
@@ -19,7 +19,7 @@
     "ganamos tu caso",
     "100% seguro"
   ],
-  "tono_historias": "Serio y cercano, de tú. Explica un derecho o un error común sin prometer resultados.",
+  "tono_historias": "Serio y cercano, de tú. Humor mínimo a medio, nunca sobre el problema del cliente. Explica un derecho o un error común sin prometer resultados.",
   "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/milla), leído el 2026-11-10",
   "cuenta": "por crear (Emi, 11/11/2026)",
   "frecuencia": "diaria",
@@ -40,5 +40,9 @@
     "whatsapp": "+52 55 6149 0498",
     "correo": "socios@millabogados.com",
     "instagram_en_sitio": "millabogados"
-  }
+  },
+  "materias": [
+    "familiar",
+    "laboral"
+  ]
 }

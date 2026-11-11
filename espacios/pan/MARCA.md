@@ -15,7 +15,6 @@ Falta que Emi confirme: cuenta de Instagram (@), si publica él o alguien más, 
 - Trato: de tú.
 - Empezará a salir más a cuadro en diciembre de 2026 y enero de 2027; hasta entonces, pocas fotos suyas.
 - El nicho está por descubrirse: ver `NICHO.md`.
-- Es la postura personal de Emi, en su propia cuenta. Tiene un cargo de dirección (así lo indicó); el nombre exacto del cargo y cómo quiere mencionarlo faltan por confirmar, y no se inventa.
-- Tener un cargo no autoriza a hablar a nombre del partido ni a usar su logotipo: eso sigue necesitando autorización expresa.
-
-Falta: nombre exacto del cargo y si debe aparecer en las historias.
+- Es la postura personal de Emi, en su propia cuenta.
+- **No se ponen cargos** (Emi, 11/11/2026): ni el suyo ni se le presenta por su puesto. Firma como él mismo.
+- No se habla a nombre del partido ni se usa su logotipo sin autorización expresa.

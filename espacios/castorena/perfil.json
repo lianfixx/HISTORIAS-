@@ -18,7 +18,7 @@
     "garantizamos",
     "ganamos"
   ],
-  "tono_historias": "Formal y sobrio, de tú (Emi, 11/11/2026; en video Vox usa usted), frases cortas. Sin humor.",
+  "tono_historias": "Sobrio, de tú, frases cortas. Humor mínimo a medio y nunca sobre un asunto en curso ni sobre un cliente.",
   "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/castorena), leído el 2026-11-10",
   "cuenta": "por crear (Emi, 11/11/2026)",
   "frecuencia": "diaria",
@@ -33,5 +33,6 @@
     "fija",
     "animada"
   ],
-  "sitio": "https://castorena.com.mx"
+  "sitio": "https://castorena.com.mx",
+  "publica_en": "cuenta de Emi; también puede usarse la del despacho"
 }

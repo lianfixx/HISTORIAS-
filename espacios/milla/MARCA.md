@@ -16,6 +16,6 @@ Falta que Emi confirme: cuenta de Instagram (@), si publica él o alguien más, 
 - Empezará a salir más a cuadro en diciembre de 2026 y enero de 2027; hasta entonces, pocas fotos suyas.
 - El nicho está por descubrirse: ver `NICHO.md`.
 - Meta: que pidan asesoría.
-- Contacto (tomado de millabogados.com el 11/11/2026): WhatsApp +52 55 6149 0498, socios@millabogados.com. El sitio enlaza instagram.com/millabogados; falta confirmar que esa sea la cuenta.
-
-Falta: confirmar el @ y las materias que se anuncian.
+- Contacto (tomado de millabogados.com el 11/11/2026): WhatsApp +52 55 6149 0498, socios@millabogados.com. - Cuenta: `@millabogados`, confirmada por Emi.
+- Materias: familiar y laboral, las que documenta la skill `milla-asesoria-juridica` (`lianfixx/ASESORIAS-JURIDICAS-`). Para el fondo jurídico de una historia se consulta esa skill; aquí no se duplica.
+- Humor mínimo a medio, permitido por Emi; nunca sobre el problema del cliente.

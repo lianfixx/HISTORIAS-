@@ -29,13 +29,19 @@ Enviadas el 10/11/2026 y contestadas por Emi el 11/11/2026. Sus respuestas ya es
 | Aprobación | Por chat, con borrador siempre | Lección general |
 | Láminas | Las necesarias | Lo decide la IA por secuencia |
 
+## Segunda ronda (11/11/2026)
+
+| Tema | Respuesta de Emi |
+|---|---|
+| PAN, cargo | No se ponen cargos |
+| Castorena, cuenta | Se publica desde su cuenta; puede usarse la del despacho |
+| MILLA, cuenta y materias | `@millabogados`; materias las de la skill `milla-asesoria-juridica` (familiar y laboral) |
+| Humor | Como estaba, y además mínimo a medio en Castorena y MILLA |
+| Castorena, trato | De tú |
+
 ## Lo que sigue abierto
 
-1. **PAN**: el nombre exacto de tu cargo de dirección y si quieres que aparezca en las historias.
-2. **Castorena**: en qué cuenta se publicará y quién del despacho da el visto bueno.
-3. **MILLA**: si `@millabogados` (el que enlaza el sitio) es la cuenta que usarás, y qué materias anunciar.
-4. **Humor y groserías** por espacio (hoy: humor en personal, mínimo en MILLA, ninguno en Castorena; groserías en ninguno).
-5. Los @ de cada cuenta cuando existan, y el primer tema.
+Los @ de las cuentas que faltan por crear y el primer tema. Emi retoma el lunes 16/11/2026.
 
 ## Cuestionario original
 

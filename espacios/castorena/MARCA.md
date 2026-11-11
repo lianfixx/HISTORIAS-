@@ -16,6 +16,7 @@ Falta que Emi confirme: cuenta de Instagram (@), si publica él o alguien más, 
 - Empezará a salir más a cuadro en diciembre de 2026 y enero de 2027; hasta entonces, pocas fotos suyas.
 - El nicho está por descubrirse: ver `NICHO.md`.
 - Emi confirmó que castorena.com.mx es el despacho.
-- En video (Vox) el trato es de usted; para historias Emi pidió de tú. Si el despacho prefiere otra cosa, manda el despacho.
-
-Falta: en qué cuenta se publica y quién del despacho da el visto bueno. Sin ese visto bueno no se publica nada.
+- Trato de tú en historias, confirmado por Emi (en video, Vox usa usted).
+- Se publica desde la cuenta de Emi y también puede usarse la del despacho (Emi, 11/11/2026).
+- Humor mínimo a medio, permitido por Emi; nunca sobre un asunto en curso ni sobre un cliente.
+- Siguen valiendo los límites de `desde-vox.md`: no opinar de asuntos en curso, no prometer resultados y no usar el logotipo sin autorización del despacho.
