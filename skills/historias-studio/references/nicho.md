@@ -2,7 +2,9 @@
 
 Cada espacio activo tiene `espacios/<espacio>/NICHO.md`. Se reescribe una vez por semana con Emi; el historial queda en git. `$H nicho --espacio E` avisa cuando pasan más de 7 días.
 
-La revisión está programada: cada domingo por la tarde una sesión nueva la hace sola con lo que haya y le escribe a Emi el resultado y lo que le falta.
+La revisión está programada como tarea «Revisión semanal del nicho de historias»: cada domingo a las 18:47 (hora de Ciudad de México) una sesión nueva la hace sola con lo que haya y le escribe a Emi el resultado y lo que le falta.
+
+Estado al 11/11/2026: la tarea se creó sin conectores (la herramienta no dejó asignarlos), así que por ahora solo alcanza el repositorio público: no ve Drive ni la box y puede que no logre subir cambios. Para que quede completa, Emi le añade en claude.ai (tareas programadas) el repositorio `lianfixx/HISTORIAS-` y los conectores de Google Drive y box. Mientras tanto, la revisión deja su resultado en el chat como «Registro pendiente para el repositorio».
 
 ## De dónde salen los números
 
