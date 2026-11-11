@@ -2,7 +2,7 @@
 
 Método, motor y memoria para hacer las historias de Instagram de Emi con cualquier IA: la IA pregunta, propone y dibuja; Emi decide.
 
-Estado: **0.2.1, candidato** (10/11/2026). El motor está probado; falta la primera secuencia real aprobada por Emi.
+Estado: **0.3.0, candidato** (11/11/2026). El motor está probado; falta la primera secuencia real aprobada por Emi.
 
 ## Qué hay aquí
 
@@ -30,6 +30,7 @@ $H espacios
 $H proyecto producciones/personal/mi-tema --espacio personal
 # llenar el brief y las láminas en producciones/personal/mi-tema/plan.json
 $H render producciones/personal/mi-tema --borrador
+$H animar producciones/personal/mi-tema --borrador   # opcional: MP4 por lámina (necesita ffmpeg)
 ```
 
 El plan recién creado no se dibuja hasta tener el `brief` con las respuestas de Emi: es a propósito.

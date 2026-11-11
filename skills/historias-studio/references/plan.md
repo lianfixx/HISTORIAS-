@@ -45,6 +45,7 @@
 | `bloques` | lista de objetos | texto, de arriba hacia abajo dentro de su `pos` |
 | `sticker` | objeto `{"tipo", "pos", "alinear", "texto"}` | solo reserva el espacio. `tipo`: `encuesta`, `pregunta`, `enlace`, `quiz`, `deslizador`, `cuenta_regresiva`, `mencion`, `ubicacion`. `texto` es lo que Emi escribirá en el sticker |
 | `nota_publicacion` | texto | instrucción para Emi al subirla (música, mención, emoji, enlace) |
+| `duracion` | 2 a 15 | segundos de la versión animada (`animar`); 5 si no se dice |
 
 `estructura` es informativa (qué estructura se eligió); el motor no la usa. `estilo.referencia` es el nombre de una ficha de `espacios/<espacio>/referencias/`.
 

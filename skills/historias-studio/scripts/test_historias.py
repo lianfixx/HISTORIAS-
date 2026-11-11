@@ -744,6 +744,58 @@ class Robustez(Base):
         self.assertIn("prueba", out.getvalue())
 
 
+class Animacion(Base):
+    def plan(self) -> dict:
+        plan = plan_base()
+        plan["laminas"][0]["bloques"].append({"texto": "segunda línea", "estilo": "nota", "pos": "abajo"})
+        plan["laminas"][0]["duracion"] = 2
+        return plan
+
+    def test_el_ultimo_cuadro_es_la_lamina_fija_y_los_bloques_entran_en_orden(self):
+        plan = self.plan()
+        cuadros = list(h.cuadros_animados(plan, 0, PERFIL, None, {}))
+        self.assertEqual(len(cuadros), 2 * h.FPS)
+        fija = h.dibujar_lamina(plan, 0, PERFIL, None, {})
+        self.assertEqual(cuadros[-1].tobytes(), fija.tobytes())
+        papel = Image.new("RGB", (h.W, h.H), h.color("papel", PERFIL))
+        self.assertIsNone(tinta(cuadros[0], papel))  # arranca con el fondo solo
+        cajas = [p["caja"] for p in h.componer(plan["laminas"][0], PERFIL)]
+        a_los_12 = cuadros[12]  # 0.4 s: ya entró el primer bloque, todavía no el segundo
+        self.assertIsNotNone(tinta(a_los_12.crop(cajas[0]), papel.crop(cajas[0])))
+        self.assertTrue(all(tinta(c.crop(cajas[1]), cuadros[0].crop(cajas[1])) is None for c in cuadros[:20]))
+        for c in cuadros:  # ni al entrar un 4 % más grande se sale de la zona segura ampliada 20 px
+            caja = tinta(c, cuadros[0])
+            if caja:
+                self.assertGreaterEqual(caja[0], h.SEG_X0 - 20)
+                self.assertLessEqual(caja[2], h.SEG_X1 + 20)
+                self.assertLessEqual(caja[3], h.SEG_Y1 + 20)
+
+    def test_duracion_fuera_de_rango(self):
+        plan = self.plan()
+        plan["laminas"][0]["duracion"] = 60
+        self.assertTrue(any("duracion" in e for e in h.validar(plan)[0]))
+
+    def test_animar_crea_un_mp4_por_lamina(self):
+        import shutil
+        import subprocess
+        if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+            self.skipTest("sin ffmpeg")
+        base = h.crear_proyecto(self.raiz / "producciones" / "prueba" / "anim", "prueba")
+        plan = self.plan()
+        plan["laminas"][1]["duracion"] = 2
+        (base / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+        r = h.animar(base)
+        self.assertEqual(r["videos"], ["01.mp4", "02.mp4"])
+        dato = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height,r_frame_rate,nb_frames,pix_fmt",
+                               "-of", "csv=p=0", str(base / "out" / "01.mp4")], capture_output=True, text=True).stdout.strip()
+        self.assertEqual(dato, "1080,1920,yuv420p,30/1,60")
+        self.assertEqual(list((base / "out").glob(".*.mp4")), [])
+
+    def test_sin_ffmpeg_el_error_es_claro(self):
+        with mock.patch("shutil.which", return_value=None), self.assertRaisesRegex(h.ErrorHistorias, "ffmpeg"):
+            h.animar(self.raiz)
+
+
 class Paquete(unittest.TestCase):
     def test_el_zip_funciona_fuera_del_repositorio(self):
         import subprocess

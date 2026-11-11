@@ -14,6 +14,7 @@
   validar PLAN [--borrador]                 revisa el plan con las mismas reglas que el render, sin escribir nada
   fondo --espacio E --prompt-file F --out O --estado S   fondo con Kie (sin --execute no gasta)
   render DIR [--borrador]                   dibuja las láminas, la hoja de revisión y el pie de entrega
+  animar DIR [--borrador]                   además, un MP4 sin audio por lámina con movimiento sobrio (necesita ffmpeg)
   saldo | cierre DIR                        créditos de Kie: lo que queda y lo gastado en la secuencia
 
 La clave de Kie es la misma de Vox Studio: variable KIE_API_KEY o, en la nube, la que inyecta el proxy.
@@ -812,6 +813,8 @@ def revisar_lamina(lam) -> None:
         _opcion(e, "alinear", ALINEACIONES, "alineación")
     if "nota_publicacion" in lam and not isinstance(lam["nota_publicacion"], str):
         raise ErrorHistorias("`nota_publicacion` debe ser texto")
+    if "duracion" in lam:
+        _num(lam["duracion"], "duracion", 2, 15)
 
 
 def componer(lamina: dict, perfil: dict, fondo_rgb=(255, 255, 255)) -> list[dict]:
@@ -897,8 +900,8 @@ def disposicion(plan: dict, i: int, perfil: dict, base: Path | None, catalogo: d
     return d
 
 
-def dibujar_lamina(plan: dict, i: int, perfil: dict, base: Path | None, catalogo: dict, guias: bool = False, marca: str = "") -> Image.Image:
-    d = disposicion(plan, i, perfil, base, catalogo)
+def fondo_listo(plan: dict, i: int, perfil: dict, d: dict) -> Image.Image:
+    """El fondo de la lámina ya recortado, filtrado y con su velo, sin texto."""
     if d["tipo"] == "color":
         img = Image.new("RGB", (W, H), d["fondo_rgb"])
         if (plan["laminas"][i].get("fondo") or {}).get("grano", True):
@@ -912,7 +915,12 @@ def dibujar_lamina(plan: dict, i: int, perfil: dict, base: Path | None, catalogo
         img = aplicar_filtro(img, d["filtro"], semilla=i)
         if d["velo"]:
             img = Image.blend(img, Image.new("RGB", img.size, (0, 0, 0)), d["velo"])
-    img = img.convert("RGBA")
+    return img
+
+
+def dibujar_lamina(plan: dict, i: int, perfil: dict, base: Path | None, catalogo: dict, guias: bool = False, marca: str = "") -> Image.Image:
+    d = disposicion(plan, i, perfil, base, catalogo)
+    img = fondo_listo(plan, i, perfil, d).convert("RGBA")
     pincel = ImageDraw.Draw(img)
     for p in d["piezas"]:
         e, caja, m = p["elemento"], p["caja"], p["medida"]
@@ -1208,6 +1216,90 @@ def render(base: Path, borrador: bool = False) -> dict:
     return {"laminas": total, "salida": str(out), "avisos": avisos, "borrador": borrador}
 
 
+FPS = 30
+
+
+def cuadros_animados(plan: dict, i: int, perfil: dict, base: Path | None, catalogo: dict, marca: str = ""):
+    """Los cuadros de la lámina i en movimiento, uno por uno.
+
+    Movimiento sobrio, con las reglas que Emi fijó en Vox: nada tiembla y no hay fundidos. La foto se acerca
+    muy despacio y cada bloque entra de golpe, en orden de lectura, con un asentamiento corto. El último cuadro
+    es idéntico a la lámina fija.
+    """
+    d = disposicion(plan, i, perfil, base, catalogo)
+    fondo = fondo_listo(plan, i, perfil, d)
+    bloques = [p for p in d["piezas"] if p["elemento"]["_tipo"] == "bloque"]
+    total = round(float(plan["laminas"][i].get("duracion", 5)) * FPS)
+    entrada = [round((0.25 + 0.55 * k) * FPS) for k in range(len(bloques))]
+    asentar = round(0.2 * FPS)
+    for f in range(total):
+        avance = f / max(1, total - 1)
+        if d["tipo"] == "color" or f == total - 1:
+            img = fondo.copy()
+        else:  # acercamiento del 4 % al 0 %: termina exactamente en el encuadre de la lámina fija
+            z = 1 + 0.04 * (1 - avance)
+            w, h_ = round(W * z), round(H * z)
+            img = fondo.resize((w, h_), Image.BICUBIC).crop(((w - W) // 2, (h_ - H) // 2, (w - W) // 2 + W, (h_ - H) // 2 + H))
+        img = img.convert("RGBA")
+        for p, t0 in zip(bloques, entrada):
+            if f < t0 and f != total - 1:
+                continue
+            m, caja = p["medida"], p["caja"]
+            capa, x, y = m["capa"], caja[0] - m["pad"], caja[1] - m["pad"]
+            resto = 1 - min(1, (f - t0) / asentar) if f != total - 1 else 0
+            if resto > 0:  # llega un 4 % más grande y se asienta sin rebotar
+                e = 1 + 0.04 * resto * resto
+                capa = capa.resize((round(capa.width * e), round(capa.height * e)), Image.BICUBIC)
+                x -= (capa.width - m["capa"].width) // 2
+                y -= (capa.height - m["capa"].height) // 2
+            img.alpha_composite(capa, (max(0, x), max(0, y)))
+        if marca:
+            ImageDraw.Draw(img).text((SEG_X0, 150), marca, font=fuente("Inter", 44, 800), fill=(255, 60, 120, 255))
+        yield img.convert("RGB")
+
+
+def animar(base: Path, borrador: bool = False) -> dict:
+    """Una versión en video (MP4 sin audio) de cada lámina, además de las fijas. La música se pone en Instagram."""
+    import shutil
+    import subprocess
+    if not shutil.which("ffmpeg"):
+        raise ErrorHistorias("para animar hace falta ffmpeg instalado; las láminas fijas (`render`) no lo necesitan")
+    plan = cargar_plan(base / "plan.json")
+    errores, avisos = validar(plan, base, final=not borrador)
+    if errores:
+        raise ErrorHistorias("el plan no pasa la validación:\n  - " + "\n  - ".join(errores))
+    perfil = perfil_de(plan["espacio"])
+    catalogo = cargar_catalogo(base)
+    out = base / "out"
+    out.mkdir(exist_ok=True)
+    hechos = []
+    for i in range(len(plan["laminas"])):
+        tmp, final = out / f".{i + 1:02d}.mp4", out / f"{i + 1:02d}.mp4"
+        orden = ["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+                 "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "medium", "-movflags", "+faststart", "-f", "mp4", str(tmp)]
+        proceso = subprocess.Popen(orden, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            for cuadro in cuadros_animados(plan, i, perfil, base, catalogo, "BORRADOR" if borrador else ""):
+                proceso.stdin.write(cuadro.tobytes())
+            proceso.stdin.close()
+            error = proceso.stderr.read().decode(errors="replace")
+            if proceso.wait() != 0:
+                raise ErrorHistorias(f"ffmpeg no pudo crear el video de la lámina {i + 1}: {error[-200:]}")
+        except (BrokenPipeError, OSError) as exc:
+            proceso.kill()
+            raise ErrorHistorias(f"ffmpeg se detuvo en la lámina {i + 1}: {exc}") from exc
+        finally:
+            if proceso.poll() is None:
+                proceso.kill()
+                proceso.wait()
+            proceso.stderr.close()
+            if proceso.returncode != 0:
+                tmp.unlink(missing_ok=True)
+        tmp.replace(final)
+        hechos.append(final.name)
+    return {"videos": hechos, "salida": str(out), "avisos": avisos, "borrador": borrador}
+
+
 def cierre(base: Path) -> str:
     ini_f = base / "estados" / "saldo_inicial.json"
     ini = _leer_json(ini_f, "el saldo inicial") if ini_f.exists() else {}
@@ -1242,6 +1334,7 @@ def _parser() -> argparse.ArgumentParser:
     a.add_argument("--estilo", choices=sorted(ESTILOS_FONDO)); a.add_argument("--modelo", choices=sorted(MODELOS_KIE), default="nano-banana-2-lite")
     a.add_argument("--execute", action="store_true")
     a = s.add_parser("render"); a.add_argument("dir", type=Path); a.add_argument("--borrador", action="store_true")
+    a = s.add_parser("animar"); a.add_argument("dir", type=Path); a.add_argument("--borrador", action="store_true")
     s.add_parser("saldo")
     a = s.add_parser("cierre"); a.add_argument("dir", type=Path)
     return p
@@ -1302,6 +1395,8 @@ def _ejecutar(args) -> None:
             print(f"Fondo guardado en {args.out}")
     elif args.cmd == "render":
         print(json.dumps(render(args.dir, args.borrador), ensure_ascii=False, indent=2))
+    elif args.cmd == "animar":
+        print(json.dumps(animar(args.dir, args.borrador), ensure_ascii=False, indent=2))
     elif args.cmd == "saldo":
         print(json.dumps(saldo_kie(), ensure_ascii=False))
     elif args.cmd == "cierre":

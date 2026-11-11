@@ -2,8 +2,8 @@
 name: historias-studio
 description: "Crear secuencias de historias de Instagram (1080x1920) para los espacios de Emi (personal, MILLA, Castorena, PAN/Acción Juvenil), cada uno por separado: preguntar el brief, proponer guion, elegir fotos reales, imitar el look de una referencia de Pinterest, dibujar las láminas y entregarlas en Drive. Usar al pedir historias, stories, una secuencia o carrusel de historias, al mandar una referencia de Pinterest, al revisar el nicho de la semana o al corregir láminas ya hechas. No es para videos (eso es Vox Studio) ni para carruseles del feed."
 metadata:
-  version: "0.2.1"
-  release_date: "2026-11-10"
+  version: "0.3.0"
+  release_date: "2026-11-11"
   language: "es-MX"
 ---
 
@@ -75,10 +75,13 @@ $H catalogo $D/fotos
 $H validar $D/plan.json --borrador    # las mismas comprobaciones que el render; si pasa, se dibuja
 $H fondo --espacio personal --prompt-file $D/prompts/02.txt --out $D/fondos/02.png --estado $D/estados/02.json --execute   # solo si hace falta
 $H render $D                          # out/01.png… + out/hoja.png + out/LEEME.md
+$H animar $D                          # además out/01.mp4…: la misma lámina en movimiento, sin audio (necesita ffmpeg)
 $H cierre $D                          # créditos de Kie gastados y restantes
 ```
 
 Campos del plan: [plan](references/plan.md). El borrador también exige el `brief` completo: primero se pregunta, luego se dibuja. Sin `--execute` nada gasta saldo, y `fondo` se niega en los espacios que no admiten imágenes generadas. La clave de Kie es la misma de Vox (`KIE_API_KEY`, o la que inyecta el proxy en la nube); nunca se escribe en un archivo ni en el chat.
+
+**Fijas y animadas.** Emi quiere las dos: salvo que diga otra cosa, cada secuencia se entrega con sus PNG y sus MP4. En el MP4 la foto se acerca muy despacio y cada bloque entra de golpe, en orden de lectura; nada tiembla y no hay fundidos (reglas que fijó en Vox). Dura 5 segundos por lámina, o `duracion` (de 2 a 15). No lleva audio: la música se elige en Instagram. Para algo más elaborado (voz, cortes, varias escenas) es trabajo de Vox Studio.
 
 Los stickers de Instagram (encuesta, pregunta, enlace, quiz, deslizador, cuenta regresiva) no se dibujan: se reserva su espacio y `out/LEEME.md` le dice a Emi cuál poner y dónde. Un sticker falso se nota y no funciona.
 
@@ -88,13 +91,15 @@ Mirar `out/hoja.png` (todas las láminas con la zona segura en cian, el rostro e
 
 ## 8. Entregar en Drive
 
-Carpeta `HISTORIAS CLAUDE` (id `1ltJlzCOw7LpQzFKXpzGkdEhbc9qTINHr`) → `<espacio>/` → una subcarpeta por secuencia, `AAAA-MM-DD tema`, con las láminas numeradas, `hoja.png`, `LEEME.md` y `plan.json`. Dar a Emi el enlace, la tabla de `cierre` y los avisos del validador. No publicar en Instagram: lo sube Emi.
+Carpeta `HISTORIAS CLAUDE` (id `1ltJlzCOw7LpQzFKXpzGkdEhbc9qTINHr`) → `<espacio>/` → una subcarpeta por secuencia, `AAAA-MM-DD tema`, con las láminas numeradas (PNG y MP4), `hoja.png`, `LEEME.md` y `plan.json`. Identificadores de todas las carpetas: `docs/DRIVE.md`. Dar a Emi el enlace, la tabla de `cierre` y los avisos del validador. No publicar en Instagram: lo sube Emi.
 
 ## 9. Aprender (obligatorio)
 
 Después de cada entrega y de cada comentario de Emi: `$H aprender "qué pasó y qué regla queda"` (con `--espacio E` si es de una sola marca). Las lecciones no se borran. Si la lección también sirve a los videos, decírselo a Emi como «propuesta para Vox»; este repositorio no escribe en el de Vox, y Vox no escribe aquí. Si la lección cambia el motor, hacer el cambio con su prueba y anotarlo en `CHANGELOG.md`.
 
-Cada semana: [revisión del nicho](references/nicho.md) por espacio activo.
+Cada semana: [revisión del nicho](references/nicho.md) por espacio activo. Está programada para los domingos y deja ideas para los siete días siguientes, porque Emi quiere publicar a diario.
+
+Para trabajar un solo espacio en un proyecto aparte de cualquier IA: pegar `espacios/<espacio>/PROYECTO.md` como instrucciones.
 
 ## Herramientas
 
@@ -105,4 +110,4 @@ Cada semana: [revisión del nicho](references/nicho.md) por espacio activo.
 
 ## Terminado
 
-`validar` sin errores, `render` final, hoja revisada, entrega en Drive con enlace, tabla de saldos, lecciones guardadas, repositorio actualizado y visto bueno de Emi.
+`validar` sin errores, `render` final y `animar`, hoja revisada, entrega en Drive con enlace, tabla de saldos, lecciones guardadas, repositorio actualizado y visto bueno de Emi.

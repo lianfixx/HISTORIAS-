@@ -1,6 +1,43 @@
 # Preguntas iniciales para Emi
 
-Enviadas el 10/11/2026. Las respuestas se pasan a `espacios/<espacio>/perfil.json`, `MARCA.md` y `NICHO.md`, y esta hoja se actualiza con lo ya contestado. Mientras no haya respuesta, cada espacio sigue en estado `candidato`.
+Enviadas el 10/11/2026 y contestadas por Emi el 11/11/2026. Sus respuestas ya están en `espacios/<espacio>/perfil.json`, `MARCA.md`, `NICHO.md` y `espacios/APRENDIZAJES.md`. Cada espacio sigue en estado `candidato` hasta su primera secuencia aprobada.
+
+## Respuestas de Emi (11/11/2026)
+
+| Tema | Respuesta | Qué se hizo |
+|---|---|---|
+| Repositorio público | Lo deja así | Nada privado entra a git |
+| Un proyecto de IA por espacio | Sí | `espacios/<espacio>/PROYECTO.md`, listo para pegar; crear el proyecto en claude.ai lo hace Emi |
+| Con qué espacio empezar | Tener listos todos | Los cuatro quedan operables |
+| Box | Para Pinterest, Instagram y todo lo que sirva | Anotado en la skill |
+| Revisión semanal | Programada, por la vía más fácil y completa | Tarea de los domingos; capturas en `_estadisticas` y, cuando haya cuenta, la box |
+| Tope de Kie | Tres fondos por secuencia, flexible | Lección general |
+| Fijas o animadas | Ambas | Comando `animar` |
+| @ de Instagram | Aún no crea las cuentas | `cuenta: por crear` en cada perfil |
+| Nicho | Por descubrir | `NICHO.md` en modo descubrimiento |
+| Frecuencia | Todos los días | La revisión deja siete ideas por espacio |
+| A cuadro | De vez en cuando; más desde diciembre y enero | Anotado en cada marca |
+| Cómo responden | Todas las formas | Se elige una por secuencia |
+| Trato y cuentas de referencia | De tú; que la IA las busque y recomiende | Trato aplicado; la búsqueda web no dio cuentas verificables, se hará en Instagram desde la box |
+| Look | El de Vox, variando con el mismo espíritu | Lección general |
+| Castorena | castorena.com.mx es el despacho | Confirmado en su marca |
+| PAN | Su postura, su cuenta; tiene un cargo de dirección | Anotado; falta el nombre exacto del cargo |
+| MILLA | Que pidan asesoría; contacto el del sitio | WhatsApp y correo tomados de millabogados.com |
+| Personal | Lifestyle, vlog, política, IA, derecho | En su perfil |
+| Fotos | Las subirá a Drive | `_fotos` de cada espacio; HEIC las convierte la IA |
+| Pinterest | Mandará de todo, para secuencia y para estilo | Al guardar cada referencia se pregunta cuál de las dos |
+| Aprobación | Por chat, con borrador siempre | Lección general |
+| Láminas | Las necesarias | Lo decide la IA por secuencia |
+
+## Lo que sigue abierto
+
+1. **PAN**: el nombre exacto de tu cargo de dirección y si quieres que aparezca en las historias.
+2. **Castorena**: en qué cuenta se publicará y quién del despacho da el visto bueno.
+3. **MILLA**: si `@millabogados` (el que enlaza el sitio) es la cuenta que usarás, y qué materias anunciar.
+4. **Humor y groserías** por espacio (hoy: humor en personal, mínimo en MILLA, ninguno en Castorena; groserías en ninguno).
+5. Los @ de cada cuenta cuando existan, y el primer tema.
+
+## Cuestionario original
 
 ## A. Decisiones del sistema
 

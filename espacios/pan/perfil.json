@@ -15,6 +15,19 @@
   "max_palabras": 28,
   "fondos_ia": false,
   "frases_prohibidas": [],
-  "tono_historias": "Directo y con datos; la postura es de Emi, no del partido. Fotos reales de actividades, no imágenes generadas.",
-  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/pan), leído el 2026-11-10"
+  "tono_historias": "De tú, directo y con datos. Es la postura personal de Emi, en su propia cuenta; no habla a nombre del partido. Fotos reales de actividades, no imágenes generadas.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/pan), leído el 2026-11-10",
+  "cuenta": "por crear (Emi, 11/11/2026)",
+  "frecuencia": "diaria",
+  "respuesta": [
+    "pregunta",
+    "encuesta",
+    "palabra por DM",
+    "enlace",
+    "WhatsApp"
+  ],
+  "formatos": [
+    "fija",
+    "animada"
+  ]
 }

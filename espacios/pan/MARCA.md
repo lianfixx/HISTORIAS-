@@ -5,3 +5,17 @@
 Aquí solo va lo propio de las historias de este espacio: `perfil.json` (filtro, límite de palabras, frases prohibidas, si admite fondos con IA), `NICHO.md`, `aprendizajes.md`, `ideas.md` y `referencias/`.
 
 Falta que Emi confirme: cuenta de Instagram (@), si publica él o alguien más, y los formatos que quiere en este espacio.
+
+## Lo que Emi decidió (11/11/2026)
+
+- La cuenta de Instagram todavía no existe; la va a crear. Hasta entonces no hay @ ni estadísticas.
+- Quiere estar activo todos los días, con historias fijas y animadas.
+- Cierres: todos valen (caja de preguntas, encuesta, palabra por DM, enlace, WhatsApp); se elige según el objetivo de cada secuencia.
+- Look: se parte de los colores y la tipografía de Vox, pero puede variar de una secuencia a otra mientras conserve el espíritu de la marca.
+- Trato: de tú.
+- Empezará a salir más a cuadro en diciembre de 2026 y enero de 2027; hasta entonces, pocas fotos suyas.
+- El nicho está por descubrirse: ver `NICHO.md`.
+- Es la postura personal de Emi, en su propia cuenta. Tiene un cargo de dirección (así lo indicó); el nombre exacto del cargo y cómo quiere mencionarlo faltan por confirmar, y no se inventa.
+- Tener un cargo no autoriza a hablar a nombre del partido ni a usar su logotipo: eso sigue necesitando autorización expresa.
+
+Falta: nombre exacto del cargo y si debe aparecer en las historias.

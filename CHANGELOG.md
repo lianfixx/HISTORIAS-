@@ -1,5 +1,18 @@
 # Cambios
 
+## 0.3.0 · 2026-11-11 · candidato
+
+Respuestas de Emi al cuestionario inicial, aplicadas.
+
+- **Historias animadas**: `historias.py animar` deja un MP4 sin audio por lámina (1080x1920, 30 cuadros por segundo). La foto se acerca muy despacio y cada bloque entra de golpe en orden de lectura; el último cuadro es idéntico a la lámina fija. Campo `duracion` por lámina (2 a 15 s). Necesita ffmpeg.
+- Cada espacio recoge lo que Emi decidió: cuentas por crear, publicación diaria, trato de tú, todos los cierres, temas de `personal`, contacto y meta de `milla`, despacho confirmado en `castorena`, postura personal en `pan`.
+- `NICHO.md` de cada espacio pasa a modo descubrimiento; la revisión semanal queda programada y deja siete ideas por espacio.
+- Estadísticas: carpeta `_estadisticas` por espacio en Drive; cuando haya cuenta, también desde la box.
+- `espacios/<espacio>/PROYECTO.md`: instrucciones para abrir un proyecto de IA por espacio.
+- 76 pruebas.
+
+Sin hacer: recomendar cuentas de referencia (la búsqueda web no dio nada verificable; se hará dentro de Instagram con la sesión de Emi).
+
 ## 0.2.1 · 2026-11-10 · candidato
 
 Revisión visual de láminas en los cuatro espacios y medición de 720 láminas (todos los estilos, posiciones, alineaciones y giros sobre los cuatro fondos de cada espacio): ninguna tinta fuera de la zona segura ni texto invisible.

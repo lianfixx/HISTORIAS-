@@ -15,6 +15,26 @@
   "max_palabras": 30,
   "fondos_ia": true,
   "frases_prohibidas": [],
-  "tono_historias": "Como le escribe a sus amigos: suelto, directo, con humor. Primera persona.",
-  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/personal), leído el 2026-11-10"
+  "tono_historias": "Como le escribe a sus amigos: de tú, suelto, directo, con humor. Primera persona.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/personal), leído el 2026-11-10",
+  "cuenta": "por crear (Emi, 11/11/2026)",
+  "frecuencia": "diaria",
+  "respuesta": [
+    "pregunta",
+    "encuesta",
+    "palabra por DM",
+    "enlace",
+    "WhatsApp"
+  ],
+  "formatos": [
+    "fija",
+    "animada"
+  ],
+  "temas": [
+    "lifestyle",
+    "vlog",
+    "política",
+    "IA",
+    "derecho"
+  ]
 }

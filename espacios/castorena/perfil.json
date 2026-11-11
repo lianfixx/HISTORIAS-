@@ -18,6 +18,20 @@
     "garantizamos",
     "ganamos"
   ],
-  "tono_historias": "Formal, de usted, frases cortas. Sin humor ni emojis.",
-  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/castorena), leído el 2026-11-10"
+  "tono_historias": "Formal y sobrio, de tú (Emi, 11/11/2026; en video Vox usa usted), frases cortas. Sin humor.",
+  "origen_marca": "Vox Studio (lianfixx/VIDEOS-IA-SKILL-MILLA, espacios/castorena), leído el 2026-11-10",
+  "cuenta": "por crear (Emi, 11/11/2026)",
+  "frecuencia": "diaria",
+  "respuesta": [
+    "pregunta",
+    "encuesta",
+    "palabra por DM",
+    "enlace",
+    "WhatsApp"
+  ],
+  "formatos": [
+    "fija",
+    "animada"
+  ],
+  "sitio": "https://castorena.com.mx"
 }
